@@ -16,9 +16,12 @@ void N29(char *str) {
 			max = n[i];
 			maxs = i;
 		}
-	for(int i = 0; str[i] != '\0'; i++){ // заменяем на пробел
-		if (str[i] == maxs)
-			str[i] = ' ';
+	for(int i = 0; str[i] != '\0'; i++){ // удаляем
+		if (str[i] == maxs){
+			for (int j = i; str[j] != '\0'; j++)
+				str[j] = str[j+1];
+			i--;
+		}
 	}
 }
 int main() {
