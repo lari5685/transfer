@@ -2,41 +2,38 @@
 #include <string>
 #include <math.h>
 
-void N29(char *str, char *out) {
-	int n[128];
-	for(int i = 0; i < 128; i++)
+void N29(char *str) {
+	int n[128]; // массив количества каждого символа в строке 
+	for(int i = 0; i < 128; i++)// обнуляем массив
 		n[i] = 0;
-	for(int i = 0; str[i] != '\0'; i++){
-		n[str[i]]++;
+	for(int i = 0; str[i] != '\0'; i++){ // заполняем 
+		n[str[i]]++; 					// количеством символов
 	}
 	int max = 1;
 	char maxs = 0;
-	for(int i = 0; i < 128; i++)
+	for(int i = 0; i < 128; i++) // ищем какого элемента было больше
 		if(n[i] > max){
 			max = n[i];
 			maxs = i;
 		}
-	int i;
-	for(i = 0; str[i] != '\0'; i++){
-		out[i] = str[i];
+	for(int i = 0; str[i] != '\0'; i++){ // заменяем на пробел
 		if (str[i] == maxs)
-			out[i] = ' ';
+			str[i] = ' ';
 	}
-	out[++i] = 0;
 }
 int main() {
 	char str1[] = "Hello World!";
-	char str_1[50];
-	N29(str1, str_1);
-	std::cout << str_1 << "\n";
+	std::cout << str1 << "\n";
+	N29(str1);
+	std::cout << str1 << "\n";
 
 	char str2[] = "abcdacbdabbbbbcd";
-	char str_2[50];
-	N29(str2, str_2);
-	std::cout << str_2 << "\n";
+	std::cout << str2 << "\n";
+	N29(str2);
+	std::cout << str2 << "\n";
 
 	char str3[] = "abcdefgh";
-	char str_3[50];
-	N29(str3, str_3);
-	std::cout << str_3 << "\n";
+	std::cout << str3 << "\n";
+	N29(str3);
+	std::cout << str3 << "\n";
 }
